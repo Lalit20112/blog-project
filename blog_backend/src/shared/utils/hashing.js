@@ -1,11 +1,11 @@
 const bcrypt = require("bcrypt")
-async function hasPassword(plainPassword){
+async function hashPassword(plainPassword){
     const hash = bcrypt.hash(plainPassword,10)
     return hash
 }
 
-async function verifyPassword(plainPassword,hasPassword){
-    const hash = bcrypt.compare(plainPassword,hasPassword)
+async function verifyPassword(plainPassword,hashPassword){
+    const hash = bcrypt.compare(plainPassword,hashPassword)
     return hash
 }
-module.exports = { verifyPassword,hasPassword}
+module.exports = { verifyPassword,hashPassword}

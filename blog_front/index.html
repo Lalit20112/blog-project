@@ -8,38 +8,49 @@
   <title>send user data</title>
   <body>
     <h2>submit your info</h2>
-    <form id="userForm">
+    <div>
       <label>Name:</label><br />
       <input type="text" id="name" required />
-
+      <br />
       <label>Email:</label><br />
       <input type="text" id="email" />
-
-      <button type="submit">Submit</button>
-    </form>
+      <br />
+      <label>Password:</label><br />
+      <input type="text" id="password" />
+      <br />
+      <button type="submit" onclick="login()">Submit</button>
+      <br>
+      <div id="responseArea"></div>
+    </div>
 
     <script>
-      document
-        .getElementById("userForm")
-        .addEventListener("submit", async function (root) {
-          root.preventDefault();
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          try {
-            const response = await fetch(
-              "http://localhost:8080/auth/register",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ name, email }),
-              }
-            );
-          } catch (error) {
-            alert("Error connecting front server");
-          }
-        });
+      async function login() {
+        // root.preventDefault();
+        // const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        try {
+          const raw = JSON.stringify({
+            email: email,
+            password: password,
+          });
+
+          const data = await fetch("http://localhost:8080/auth/login", {
+            method: "POST",
+            body: raw,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const response = await data.json();
+
+          console.log(response,"hi");
+          document.getElementById("responseArea").innerText = json.stringify(response, null,2)
+
+        } catch (error) {
+          console.error("Error connecting front server");
+        }
+      }
     </script>
   </body>
 </html>
