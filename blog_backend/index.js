@@ -1,5 +1,5 @@
 const express = require("express")
-const connectDB = require("./src/config/connecgtDB")
+const connectDB = require("./src/config/connectDB")
 const AuthRouter = require("./src/features/auth/auth.routes")
 const app = express()
 const port = 8080

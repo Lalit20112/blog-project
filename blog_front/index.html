@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <title>send user data</title>
+  <body>
+    <h2>submit your info</h2>
+    <form id="userForm">
+      <label>Name:</label><br />
+      <input type="text" id="name" required />
+
+      <label>Email:</label><br />
+      <input type="text" id="email" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("userForm")
+        .addEventListener("submit", async function (root) {
+          root.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          try {
+            const response = await fetch(
+              "http://localhost:8080/auth/register",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, email }),
+              }
+            );
+          } catch (error) {
+            alert("Error connecting front server");
+          }
+        });
+    </script>
+  </body>
+</html>
