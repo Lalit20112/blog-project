@@ -4,3 +4,5 @@ const AuthRouter = Router()
 
 AuthRouter.post("/register", registerController)
 module.exports = AuthRouter
+
+

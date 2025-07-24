@@ -1,7 +1,7 @@
-const {Schema,model} = require("mongoose")
+const {Schema, model} = require("mongoose")
 const authSchema = new Schema({
     name: String,
-    password: String,
+    email: String,
     password: String,
     age: Number,
     role:{
@@ -10,4 +10,4 @@ const authSchema = new Schema({
     }
 })
 const AuthModel = model("User",authSchema)
-model.exports = AuthModel
+module.exports = AuthModel
