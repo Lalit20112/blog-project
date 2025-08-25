@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const connectDB = require("./src/config/connecgtDB");
-const AuthRouter = require("./src/features/auth/auth.routes");
+const { AuthRouter } = require("./src/features/auth/auth.routes");
 
 const app = express();
 const port = 8080;

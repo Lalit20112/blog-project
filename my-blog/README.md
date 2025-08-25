@@ -85,3 +85,61 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 ---
 
 Built with ❤️ using React Router.
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <title>send user data</title>
+  <body>
+    <h2>submit your info</h2>
+    <div>
+      <label>Name:</label><br />
+      <input type="text" id="name" required />
+      <br />
+      <label>Email:</label><br />
+      <input type="text" id="email" />
+      <br />
+      <label>Password:</label><br />
+      <input type="text" id="password" />
+      <br />
+      <button type="submit" onclick="login()">Submit</button>
+      <br>
+      <div id="responseArea"></div>
+    </div>
+
+    <script>
+      async function login() {
+        // root.preventDefault();
+        // const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        try {
+          const raw = JSON.stringify({
+            email: email,
+            password: password,
+          });
+
+          const data = await fetch("http://localhost:8080/auth/login", {
+            method: "POST",
+            body: raw,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const response = await data.json();
+
+          console.log(response,"hi");
+          document.getElementById("responseArea").innerText = json.stringify(response, null,2)
+
+        } catch (error) {
+          console.error("Error connecting front server");
+        }
+      }
+    </script>
+  </body>
+</html>
