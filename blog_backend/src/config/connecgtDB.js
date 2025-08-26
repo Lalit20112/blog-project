@@ -1,5 +1,5 @@
 const {connect} = require('mongoose')
 async function connectDB(){
-    await connect("mongodb+srv://Lalit:vOuLo1C448331IRs@lalit.hrwvb.mongodb.net/")
+    await connect("mongodb://localhost:27017/bloges")
 }
 module.exports = connectDB
