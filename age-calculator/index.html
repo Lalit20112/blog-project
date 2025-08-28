@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="username">Name</label>
+    <input type="text" id="username" placeholder="enter your name"><br>
+    <label for="birth">D.O.B.</label>
+    <input type="date" id="birth" placeholder="Date Of Bithday">
+    <p id="result"></p>
+    <button onclick="getValue()">Submit</button>
+
+    <script>
+        document.getElementById("birth").addEventListener("input", function(){
+            const dobinput = this.value
+            console.log(dobinput,"console data")
+        })
+
+
+        function getValue(){
+            const  inputVal  = document.getElementById("username").value
+
+            const dob = new Date(document.getElementById("birth").value)
+            const dobe = new Date(dob) 
+            const today = new Date()
+            let age = today.getFullYear() - dobe.getFullYear()
+
+            document.getElementById("result").innerHTML = ` ${inputVal} your age is ${age} year`
+        }
+        
+    </script>
+</body>
+</html> 
