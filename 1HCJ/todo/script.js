@@ -1,6 +1,6 @@
 const taskList = []
 const listElement = document.getElementById("taskList")
-const status = document.getElementById("status")
+const statusText = document.getElementById("status")
 
 // speach recognition
 const speechRecognition = window.speechRecognition || window.webkitSpeechRecognition
